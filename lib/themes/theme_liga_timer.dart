@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:untitled/themes/theme_colors.dart';
 
 class ThemeLigaTimer extends StatefulWidget {
-  const ThemeLigaTimer({super.key});
+  final int madridScore;
+  final int barcaScore;
+  const ThemeLigaTimer(
+      {super.key, required this.madridScore, required this.barcaScore});
 
   @override
   State<ThemeLigaTimer> createState() => _ThemeLigaTimerState();
@@ -43,8 +46,8 @@ class _ThemeLigaTimerState extends State<ThemeLigaTimer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
-      height: 100,
+      width: 300,
+      height: 150,
       child: Row(
         children: [
           Expanded(
@@ -66,18 +69,20 @@ class _ThemeLigaTimerState extends State<ThemeLigaTimer> {
                     ),
                   ),
                 ),
-                Container(
-                  color: ThemeColors.myWhite,
-                  padding: const EdgeInsets.all(4),
-                  child: Expanded(
-                    child: Center(
-                      child: FittedBox(
-                        child: Text(
-                          _formatTime(_seconds),
-                          style: TextStyle(
-                              fontSize: 36,
-                              color: ThemeColors.myBlack,
-                              fontWeight: FontWeight.bold),
+                Expanded(
+                  child: Container(
+                    color: ThemeColors.myWhite,
+                    padding: const EdgeInsets.all(4),
+                    child: Expanded(
+                      child: Center(
+                        child: FittedBox(
+                          child: Text(
+                            _formatTime(_seconds),
+                            style: TextStyle(
+                                fontSize: 36,
+                                color: ThemeColors.myBlack,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ),
@@ -155,8 +160,7 @@ class _ThemeLigaTimerState extends State<ThemeLigaTimer> {
                     child: Center(
                       child: FittedBox(
                         child: Text(
-                          '0',
-                          //'$_madridScore',
+                          '${widget.madridScore}',
                           style: TextStyle(
                               fontSize: 45,
                               color: ThemeColors.myBlack,
@@ -175,8 +179,7 @@ class _ThemeLigaTimerState extends State<ThemeLigaTimer> {
                     child: FittedBox(
                       child: Center(
                         child: Text(
-                          '0',
-                          //'$_barcaScore',
+                          '${widget.barcaScore}',
                           style: TextStyle(
                               fontSize: 45,
                               color: ThemeColors.myBlack,
